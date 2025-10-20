@@ -46,7 +46,7 @@ public Dipendente findById(@PathVariable UUID dipendenteId){
     }
 
 //DELETE
-@DeleteMapping("/{dipendenteId")
+@DeleteMapping("/{dipendenteId}")
 @ResponseStatus(HttpStatus.NO_CONTENT)
 public void findByIdAndDelete(@PathVariable UUID dipendenteId){
          this.dipendenteService.findByIdAndDelete(dipendenteId);

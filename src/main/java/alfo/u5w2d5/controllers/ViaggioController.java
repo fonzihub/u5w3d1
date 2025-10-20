@@ -35,13 +35,13 @@ public class ViaggioController {
         return this.viaggioService.findById(viaggioId);
     }
 //    UPDATE
-    @PutMapping("/{viaggioId")
+    @PutMapping("/{viaggioId}")
     public Viaggio findByIdAndUpdate(@PathVariable UUID viaggioId, @RequestBody ViaggioDTO body){
         return this.viaggioService.findByIdAndUpdate(viaggioId,body);
     }
 
 //    DELETE
-    @DeleteMapping("/{viaggioId")
+    @DeleteMapping("/{viaggioId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdAndDelete(@PathVariable UUID viaggioId){
         this.viaggioService.findByIdAndDelete(viaggioId);
