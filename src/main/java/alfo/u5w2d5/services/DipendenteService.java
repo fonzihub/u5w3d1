@@ -7,6 +7,7 @@ import alfo.u5w2d5.repositories.DipendenteRepository;
 import lombok.extern.slf4j.Slf4j;
 import alfo.u5w2d5.exceptions.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,8 +31,8 @@ public class DipendenteService {
                     }
                 }
         );
-        Dipendente newDipendente = new Dipendente(body.getUsername(), body.getNome(), body.getCognome(), body.getEmail());
-//SALVO
+        Dipendente newDipendente = new Dipendente(body.getUsername(), body.getNome(), body.getCognome(), body.getEmail(),body.getPassword());
+
         Dipendente savedDipendente = this.dipendenteRepository.save(newDipendente);
 // 4. Log
         log.info("L'utente con id: " + savedDipendente.getId() + " è stato salvato correttamente!");
@@ -71,6 +72,10 @@ public class DipendenteService {
         Dipendente found = this.findById(dipendenteId);
         this.dipendenteRepository.delete(found);
 
+    }
+
+    public Dipendente findByEmail(String email) {
+        return this.dipendenteRepository.findByEmail(email).orElseThrow(() -> new NotFoundExceptions("L'utente con l'email " + email + " non è stato trovato"));
     }
 
 }

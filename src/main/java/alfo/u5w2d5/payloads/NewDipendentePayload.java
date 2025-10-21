@@ -10,4 +10,5 @@ public class NewDipendentePayload {
     private String nome;
     private String cognome;
     private String email;
+    private String password;
 }
